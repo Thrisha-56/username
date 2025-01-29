@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Blog Post</title>
+  <style>
+    /* Blog Content Styling */
+    .blog-content {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 20px auto;
+    }
+
+    /* Heading Styles */
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      color: #333;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #444;
+    }
+
+    h3 {
+      font-size: 24px;
+      color: #555;
+    }
+
+    /* Paragraph and Comment Styling */
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* Comments Section */
+    .comments {
+      margin-top: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .comment {
+      padding: 10px;
+      margin-top: 10px;
+      border-bottom: 1px solid #eeeeee;
+      font-size: 14px;
+    }
+
+    .comment:last-child {
+      border-bottom: none;
+    }
+
+    .comment strong {
+      font-weight: bold;
+    }
+
+    .comment[style="color: blue;"] {
+      color: #007bff;
+    }
+
+    .comment[style="color: green;"] {
+      color: #28a745;
+    }
+
+    /* Input and Button Styling */
+    .new-comment {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .new-comment input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid grey;
+      border-radius: 4px;
+    }
+
+    .new-comment button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    .new-comment button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1> BLOG</h1>
+  <div class="blog-content">
+    <center>
+      <h2>Web Development</h2>
+      <p>
+        HTML (HyperText Markup Language) serves as the backbone of web content, structuring elements like headings,
+        paragraphs, and images to build the foundation of a web page.
+        CSS (Cascading Style Sheets), on the other hand, brings that content to life by styling and positioning HTML
+        elements, from adjusting colors and fonts to managing layouts, creating an engaging and visually appealing user
+        experience.
+      </p>
+    </center>
+  </div>
+
+  <div class="comments">
+    <h3>Comments:</h3>
+    <div class="comment" style="color: blue;">
+      <strong>Author:</strong> This is an author comment.
+    </div>
+    <div class="comment" style="color: green;">
+      <strong>Guest:</strong> This is a guest comment. Guests often share their opinions or questions.
+    </div>
+    <div class="comment" style="color: green;">
+      <strong>Guest:</strong> Another guest comment with some additional thoughts or reactions.
+    </div>
+    <div class="new-comment">
+      <input type="text" id="commentInput" placeholder="Write a comment..." />
+      <button id="addCommentBtn">Add Comment</button>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript to dynamically add a new comment
+    document.addEventListener("DOMContentLoaded", () => {
+      const commentsContainer = document.querySelector(".comments");
+      const commentInput = document.getElementById("commentInput");
+      const addCommentBtn = document.getElementById("addCommentBtn");
+
+      // Add event listener for adding comments
+      addCommentBtn.addEventListener("click", () => {
+        const commentText = commentInput.value.trim();
+        if (commentText) {
+          const newComment = document.createElement("div");
+          newComment.className = "comment";
+          newComment.style.color = "purple";
+          newComment.innerHTML = `<strong>New Comment:</strong> ${commentText}`;
+          commentsContainer.insertBefore(newComment, document.querySelector(".new-comment"));
+          commentInput.value = ""; // Clear the input field
+        } else {
+          alert("Please enter a comment!");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
